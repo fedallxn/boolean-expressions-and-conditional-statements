@@ -38,7 +38,13 @@ if (choice === "mountains" && hasTorch) { //if the user types 'mountains' AND ha
   console.log("You safely navigate through the dark mountains. But there are creatures ahead.");
   if (hasWeapon) { //since hasWeapon is true, the output will be the string below
     console.log("Good thing you have this awesome weapon to fight with!"); 
-  } else { //if hasWeapon was changed to false, the string below will be the result
+    const choice2 = readline.question("Do you want to 'recover' after your fight or 'continue' on?"); //prompts user to type 'recover' or 'continue'
+    if (choice2 === "recover") { //if user types 'recover' the string below will be the result
+      console.log("You decide to make a fire and take a few hours of rest.");
+    } else if (choice2 === "continue") { //if user types 'continue' the string below will be the result
+      console.log("You press on despite being tired, ready to face whatever lays ahead!");
+    }
+  } else  { //if hasWeapon was changed to false, the string below will be the result
     console.log("Too bad you don't have a weapon! Maybe you should turn back.")
   }
 } else if (choice === "mountains" && !hasTorch) { //if the user types 'mountains' AND hasTorch is false
@@ -50,11 +56,11 @@ if (choice === "mountains" && hasTorch) { //if the user types 'mountains' AND ha
   } else if (!hasWeapon && hasCharisma) { // chose village AND hasWeapon is false AND hasCharisma is true
     console.log("The villagers are pleased with your arrival!");
   } else if (hasWeapon || !hasCharisma) { //chose village AND hasWeapon is true OR hasCharisma is false
-    console.log("The villagers are distrustful of your arrival.")
-    const choice2 = readline.question("Do you want to intimidate them? 'yes' or 'no'?"); //prompts the user to type 'yes' or 'no'
-    if (choice2 === "yes") { //if user types 'yes', the text below is the result
-      console.log("You pretend to lunge at a passing villager.")
-    } else if (choice2 === "no") { //if user types 'no', the text below is the result
+    console.log("The villagers are distrustful of your arrival.");
+    const choice3 = readline.question("Do you want to intimidate them? 'yes' or 'no'?"); //prompts the user to type 'yes' or 'no'
+    if (choice3 === "yes") { //if user types 'yes', the text below is the result
+      console.log("You pretend to lunge at a passing villager.");
+    } else if (choice3 === "no") { //if user types 'no', the text below is the result
       console.log("You try to find the nearest Tavern.")
     }
   }
