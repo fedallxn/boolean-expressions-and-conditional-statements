@@ -32,34 +32,34 @@ const hasWeapon = true;
 const hasCharisma = true;
 
 console.log("You see two paths: one leads to the mountains, the other to the village.");
-const choice = readline.question("Do you go to the 'mountains' or the 'village'?");
+const choice = readline.question("Do you go to the 'mountains' or the 'village'?"); //promopts the user to type 'mountains' or 'village'
 
-if (choice === "mountains" && hasTorch) {
+if (choice === "mountains" && hasTorch) { //if the user types 'mountains' AND hasTorch is true
   console.log("You safely navigate through the dark mountains. But there are creatures ahead.");
-  if (hasWeapon === true) {
-    console.log("Good thing you have this awesome weapon to fight with!");
-  } else {
+  if (hasWeapon) { //since hasWeapon is true, the output will be the string below
+    console.log("Good thing you have this awesome weapon to fight with!"); 
+  } else { //if hasWeapon was changed to false, the string below will be the result
     console.log("Too bad you don't have a weapon! Maybe you should turn back.")
   }
-} else if (choice === "mountains" && !hasTorch) {
+} else if (choice === "mountains" && !hasTorch) { //if the user types 'mountains' AND hasTorch is false
   console.log("It's too dark to proceed. You decide to turn back.");
-} else if (choice === "village" || hasMap) {
+} else if (choice === "village" || !hasMap) { //if the user types 'village' OR hasMap is true
   console.log("You find your way to the village.");
-  if (hasWeapon === false && hasCharisma === false) {
+  if (!hasWeapon && !hasCharisma) { //nested conditional: if they choose village AND hasWeapon is false AND hasCharisma is false
     console.log("The villagers take no notice in your arrival.");
-  } else if (hasWeapon === false && hasCharisma === true) {
+  } else if (!hasWeapon && hasCharisma) { // chose village AND hasWeapon is false AND hasCharisma is true
     console.log("The villagers are pleased with your arrival!");
-  } else if (hasWeapon === true || hasCharisma === false) {
+  } else if (hasWeapon || !hasCharisma) { //chose village AND hasWeapon is true OR hasCharisma is false
     console.log("The villagers are distrustful of your arrival.")
-    const choice2 = readline.question("Do you want to intimidate them? 'yes' or 'no'?");
-    if (choice2 === "Yes") {
+    const choice2 = readline.question("Do you want to intimidate them? 'yes' or 'no'?"); //prompts the user to type 'yes' or 'no'
+    if (choice2 === "yes") { //if user types 'yes', the text below is the result
       console.log("You pretend to lunge at a passing villager.")
-    } else if (choice2 === "No") {
+    } else if (choice2 === "no") { //if user types 'no', the text below is the result
       console.log("You try to find the nearest Tavern.")
     }
   }
 } else {
-  console.log("You get lost and wander aimlessly.");
+  console.log("You get lost and wander aimlessly."); //if neither option is chosen
 }
 
 /* 
